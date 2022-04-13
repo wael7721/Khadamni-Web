@@ -5,6 +5,7 @@ const Post = new mongoose.Schema(
     employeeid: { type: mongoose.Schema.Types.ObjectId,ref:"UserData", required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
+    location:{type:String},
     dateofpost: { type: Date, default: Date.now, required: true },
   },
   { collection: "post-data" }
