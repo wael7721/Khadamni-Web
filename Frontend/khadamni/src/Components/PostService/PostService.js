@@ -1,114 +1,117 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import {createPost} from '../../redux/services/post.service'
+import { useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import PostAddRoundedIcon from '@mui/icons-material/PostAddRounded';
+export default function SelectOtherProps(props) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
+  const [Location, setLocation] = React.useState('');
 
+  const handleLocation = (event) => {
+    setLocation(event.target.value);
+  };
 
-const theme = createTheme();
+  const [Schedule, setSchedule] = React.useState('');
 
-export default function PostService() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const handleSchedule = (event) => {
+    setSchedule(event.target.value);
+  };
+
+  const [Field, setField] = React.useState('');
+
+  const handleField = (event) => {
+    setField(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    const data = {
+      Location: Location,
+      Field: Field,
+      Schedule: Schedule
+    }
+    setLoading(true);
+
+    dispatch(createPost(data, navigate))
+      .unwrap()
+      .then(() => {
+        props.history.push("/Dashboard/Posts");
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
+    <div>
+      <form>
+      <FormControl sx={{ m: 1, minWidth: 120 }} >
+        <InputLabel id="demo-simple-select-required-label">Schedule</InputLabel>
+        <Select
+          labelId="demo-simple-select-required-label"
+          id="demo-simple-select-required-label"
+          value={Schedule}
+          label="Schedule"
+          onChange={handleSchedule}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <PostAddRoundedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-           Create a Post
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="Location"
-                  required
-                  fullWidth
-                  id="Location"
-                  label="Location"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="Title"
-                  label="Title"
-                  name="Title"
-                  autoComplete="Title"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="Description"
-                  label="Description"
-                  name="Description"
-                  autoComplete="Description"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="Renumeration"
-                  label="Renumeration"
-                  
-                  id="Renumeration"
-                  autoComplete="Renumeration"
-                />
-              </Grid>
-              
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              href="/SignIn"
-            >
-              Post
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        
-      </Container>
-    </ThemeProvider>
+          
+          <MenuItem value={10}>Monday</MenuItem>
+          <MenuItem value={20}>Tuesday</MenuItem>
+          <MenuItem value={30}>Thursday</MenuItem>
+          <MenuItem value={40}>Wednsday</MenuItem>
+          <MenuItem value={50}>Thursday</MenuItem>
+          <MenuItem value={60}>Friday</MenuItem>
+          <MenuItem value={70}>Saturday</MenuItem>
+          <MenuItem value={80}>Sunday</MenuItem>
+        </Select>
+        <FormHelperText>Required</FormHelperText>
+      </FormControl>
+      <FormControl sx={{ m: 1, minWidth: 120 }} >
+        <InputLabel id="demo-simple-select-error-label">Location</InputLabel>
+        <Select
+          labelId="demo-simple-select-error-label"
+          id="demo-simple-select-error"
+          value={Location}
+          label="Location"
+          onChange={handleLocation}
+         
+        >
+         
+          <MenuItem value={10}>Tunis</MenuItem>
+          <MenuItem value={20}>Ariana</MenuItem>
+          <MenuItem value={30}>Ben Arous</MenuItem>
+        </Select>
+        <FormHelperText>Error</FormHelperText>
+      </FormControl>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-readonly-label">Field</InputLabel>
+        <Select
+          labelId="demo-simple-select-readonly-label"
+          id="demo-simple-select-readonly"
+          value={Field}
+          label="Field"
+          onChange={handleField}
+          inputProps={{ readOnly: false }}
+        >
+          
+          <MenuItem value={10}>Gardening</MenuItem>
+          <MenuItem value={20}>Baby sitting</MenuItem>
+          <MenuItem value={30}>Plumbering</MenuItem>
+        </Select>
+        <FormHelperText>Read only</FormHelperText>
+      </FormControl>
+      
+      <button>Submit </button>
+      </form>
+    </div>
   );
 }
