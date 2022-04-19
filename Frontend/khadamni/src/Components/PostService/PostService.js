@@ -4,8 +4,16 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {createPost} from '../../redux/services/post.service'
+import { useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function SelectOtherProps() {
+export default function SelectOtherProps(props) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
   const [Location, setLocation] = React.useState('');
 
   const handleLocation = (event) => {
@@ -24,8 +32,28 @@ export default function SelectOtherProps() {
     setField(event.target.value);
   };
 
+  const handleSubmit = () => {
+    const data = {
+      Location: Location,
+      Field: Field,
+      Schedule: Schedule
+    }
+    setLoading(true);
+
+    dispatch(createPost(data, navigate))
+      .unwrap()
+      .then(() => {
+        props.history.push("/Dashboard/Posts");
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <div>
+      <form>
       <FormControl sx={{ m: 1, minWidth: 120 }} >
         <InputLabel id="demo-simple-select-required-label">Schedule</InputLabel>
         <Select
@@ -47,22 +75,20 @@ export default function SelectOtherProps() {
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-      <FormControl sx={{ m: 1, minWidth: 120 }} error>
-        <InputLabel id="demo-simple-select-error-label">Schedule</InputLabel>
+      <FormControl sx={{ m: 1, minWidth: 120 }} >
+        <InputLabel id="demo-simple-select-error-label">Location</InputLabel>
         <Select
           labelId="demo-simple-select-error-label"
           id="demo-simple-select-error"
-          value={Schedule}
-          label="Schedule"
-          onChange={handleSchedule}
-          renderValue={(value) => `⚠️  - ${value}`}
+          value={Location}
+          label="Location"
+          onChange={handleLocation}
+         
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+         
+          <MenuItem value={10}>Tunis</MenuItem>
+          <MenuItem value={20}>Ariana</MenuItem>
+          <MenuItem value={30}>Ben Arous</MenuItem>
         </Select>
         <FormHelperText>Error</FormHelperText>
       </FormControl>
@@ -76,33 +102,16 @@ export default function SelectOtherProps() {
           onChange={handleField}
           inputProps={{ readOnly: false }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          
+          <MenuItem value={10}>Gardening</MenuItem>
+          <MenuItem value={20}>Baby sitting</MenuItem>
+          <MenuItem value={30}>Plumbering</MenuItem>
         </Select>
         <FormHelperText>Read only</FormHelperText>
       </FormControl>
-      <FormControl required sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-required-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-required-label"
-          id="demo-simple-select-required"
-          value={Location}
-          label="Age *"
-          onChange={handleField}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-        <FormHelperText>Required</FormHelperText>
-      </FormControl>
+      
+      <button>Submit </button>
+      </form>
     </div>
   );
 }
