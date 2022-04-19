@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
+//use the actions defined in the services file
 
 import AuthService from "../services/auth.service";
 
@@ -13,7 +14,7 @@ export const register = createAsyncThunk(
         const response = await AuthService.register({user, pwd});
         console.log(response);
         thunkAPI.dispatch(setMessage(response.data.message));
-        navigate("/SignIn")
+        navigate("/Dashboard")
         return response.data;
       } catch (error) {
         const message =
@@ -38,6 +39,7 @@ export const register = createAsyncThunk(
         
         
         console.log("+++")
+        navigate ("/Dashboard")
         return { user: data };
       } catch (error) {
         const message =
@@ -59,6 +61,8 @@ export const register = createAsyncThunk(
   const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
+
+  //slice provides the actions global states to every components 
 
 const authSlice = createSlice({
   name: "auth",

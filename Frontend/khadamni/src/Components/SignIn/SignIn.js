@@ -15,14 +15,12 @@ import { clearMessage } from "../../redux/Slices/message";
 
 
  const  SignIn = (props) => {
-    
-   
 
     const LOGIN_URL = '/auth';
     const [loading, setLoading] = useState(false);
 
-  const { isLoggedIn } = useSelector((state) => state.auth);
-  const { message } = useSelector((state) => state.message);
+    const { isLoggedIn } = useSelector((state) => state.auth);
+    const { message } = useSelector((state) => state.message);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,84 +28,48 @@ import { clearMessage } from "../../redux/Slices/message";
       }, [dispatch]);
     
 
-  const { setAuth } = useContext(AuthContext);
-  const userRef = useRef();
-  const errRef = useRef();
+    const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const [user, setUser] = useState('');
-  const [pwd, setPwd] = useState('');
-  const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-      userRef.current.focus();
-  }, [])
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
 
-  useEffect(() => {
-      setErrMsg('');
-  }, [user, pwd])
-
-//   const handleSubmit = async (e) => {
-//       e.preventDefault();
-
-//       try {
-//           const response = await axios.post(LOGIN_URL,
-//               JSON.stringify({ user, pwd }),
-//               {
-//                   headers: { 'Content-Type': 'application/json' },
-//                   withCredentials: true
-//               }
-//           );
-//           //console.log(JSON.stringify(response));
-//           const accessToken = response?.data?.accessToken;
-//           const roles = response?.data?.roles;
-//         //   setAuth({ user, pwd, roles, accessToken });
-//         //   setUser('');
-//         //   setPwd('');
-//         //   setSuccess(true)
-//           console.log("======")
-//           navigate("/Dashboard")
-        
-          
-//       } catch (err) {
-//           if (!err?.response) {
-//               setErrMsg('No Server Response');
-//           } else if (err.response?.status === 400) {
-//               setErrMsg('Missing Username or Password');
-//           } else if (err.response?.status === 401) {
-//               setErrMsg('Unauthorized');
-//           } else {
-//               setErrMsg('Login Failed');
-//           }
-//           errRef.current.focus();
-//       }
-//   }
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd])
   
-const handleSubmit = () => {
-    const data = {
-        user: user,
-        pwd: pwd
+    const handleSubmit = () => {
+        const data = {
+            user: user,
+            pwd: pwd
+        }
+        setLoading(true);
+
+        dispatch(login(data, navigate))
+        .unwrap()
+        .then(() => {
+            props.history.push("/Dashboard");
+            window.location.reload();
+        })
+        .catch(() => {
+            setLoading(false);
+        });
+    };
+
+    if (isLoggedIn) {
+        return <Navigate to="/Dashboard" />;
     }
-    setLoading(true);
 
-    dispatch(login(data, navigate))
-      .unwrap()
-      .then(() => {
-        props.history.push("/Dashboard");
-        window.location.reload();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  };
-
-  if (isLoggedIn) {
-    return <Navigate to="/Dashboard" />;
-  }
-
-  return (
+return (
     <>
         {success ? (
             <section>

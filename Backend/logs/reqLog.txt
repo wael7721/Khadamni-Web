@@ -681,3 +681,10 @@
 20220412	00:20:26	6c746982-45ef-45ba-bc85-878341a8206d	OPTIONS	http://localhost:3000	/auth
 20220412	00:20:26	2eea599f-2475-45d8-a684-ea7789663b79	POST	http://localhost:3000	/auth
 20220412	00:20:27	d9bf1446-d068-41b5-bf0a-56620b801311	POST	http://localhost:3000	/auth
+20220412	11:32:02	0f7f4109-cffd-44ea-9b2f-ccf1309ad28b	GET	undefined	/
+20220412	11:32:03	74db60ab-b2be-4551-8ed8-a7a0566f1b83	GET	undefined	/css/style.css
+20220412	11:32:06	6dc23615-f6e9-45d9-a552-e1d727f12a7b	GET	undefined	/favicon.ico
+20220412	11:33:45	fec721ea-71c9-41c7-8ab2-411cf371f861	OPTIONS	http://localhost:3000	/register
+20220412	11:33:45	8a5417eb-e3c1-4738-a9cd-7fa3b074740e	POST	http://localhost:3000	/register
+20220412	11:35:08	d3718475-b7bb-422e-baa9-49df13f77261	OPTIONS	http://localhost:3000	/auth
+20220412	11:35:08	1cabf963-d541-4f5e-83d5-3286f4350c13	POST	http://localhost:3000	/auth

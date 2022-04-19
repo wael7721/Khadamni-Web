@@ -1,13 +1,13 @@
 import axios from "axios";
-
+//actions:
 const API_URL = "http://localhost:3500/";
 
-const register = ({user, pwd}) => {
+const register = ({user, pwd}) => { //send the data to the back
   return axios.post(API_URL + "register",
     JSON.stringify({ user, pwd }),
       {
         headers: { 'Content-Type': 'application/json' },
-        withCredentials: true
+        withCredentials: true //ask Mr Ikdem
     })
   };
 
