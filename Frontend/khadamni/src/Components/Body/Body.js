@@ -15,6 +15,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { makeStyles } from "@material-ui/core/styles";
+import PrimarySearchAppBar from '../Header/AppBar';
 
 
 function Copyright() {
@@ -101,6 +102,7 @@ export default function Album() {
   return (
     
     <ThemeProvider theme={theme}>
+      <PrimarySearchAppBar/>
       <CssBaseline />
      <main>
         {/* Hero unit */}

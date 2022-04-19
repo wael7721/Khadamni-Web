@@ -30,34 +30,34 @@ const logout = () => {
 const login = async ({user, pwd}) => {
        
   
-        try {
-            const response = await axios.post(API_URL + "auth",
-                JSON.stringify({ user, pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response));
-            
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-          //   setAuth({ user, pwd, roles, accessToken });
-          //   setUser('');
-          //   setPwd('');
-          //   setSuccess(true)
-            console.log("======")
-            
-            
-        } catch (err) {
-            
-        }
+    try {
+        const response = await axios.post(API_URL + "auth",
+            JSON.stringify({ user, pwd }),
+            {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            }
+        );
+        console.log(JSON.stringify(response));
+        
+        const accessToken = response?.data?.accessToken;
+        const roles = response?.data?.roles;
+      //   setAuth({ user, pwd, roles, accessToken });
+      //   setUser('');
+      //   setPwd('');
+      //   setSuccess(true)
+        console.log("======")
+        
+        
+    } catch (err) {
+        
     }
+}
 
-    const authService = {
-      register,
-      login,
-      logout,
-    };
+const authService = {
+  register,
+  login,
+  logout,
+};
 
 export default authService;
