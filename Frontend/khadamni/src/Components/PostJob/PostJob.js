@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import {createPost} from '../../redux/services/post.service'
+import { createPost } from '../../redux/Slices/post.slice'
 import { useNavigate } from 'react-router-dom';
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function SelectOtherProps(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
+  const [Loading, setLoading] = React.useState('');
   const [Location, setLocation] = React.useState('');
 
   const handleLocation = (event) => {
@@ -38,7 +37,7 @@ export default function SelectOtherProps(props) {
       Field: Field,
       Schedule: Schedule
     }
-    setLoading(true);
+    
 
     dispatch(createPost(data, navigate))
       .unwrap()
@@ -47,7 +46,7 @@ export default function SelectOtherProps(props) {
         window.location.reload();
       })
       .catch(() => {
-        setLoading(false);
+        console.error("error");
       });
   };
 

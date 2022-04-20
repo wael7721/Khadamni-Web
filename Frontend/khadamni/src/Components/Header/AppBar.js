@@ -20,7 +20,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import VpnKeyRoundedIcon from '@mui/icons-material/VpnKeyRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-import  Post from "../PostService/PostService";
+
 import JobberSignUp from "../JobberSignUp/JobberSignUp";
 
 const Search = styled('div')(({ theme }) => ({

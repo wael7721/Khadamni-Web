@@ -761,3 +761,6 @@
 20220417	19:01:58	92a2a0a9-bdb0-46aa-a1ad-1a1cf47e9274	OPTIONS	http://localhost:3000	/auth
 20220417	19:01:58	b4a15a07-5a9a-4dc4-939c-92c0d9978887	POST	http://localhost:3000	/auth
 >>>>>>> 261b90e9d467e2a107af18ecdba67454b4083608
+20220420	00:54:18	b4f1a8b7-2492-42c7-8db6-976fc886256d	OPTIONS	http://localhost:3000	/auth
+20220420	00:54:58	03e22654-3e70-4da5-b911-e4aad161a4f0	OPTIONS	http://localhost:3000	/auth
+20220420	00:54:58	dbb7ffda-bc70-46fb-834c-17b200dbdbc1	POST	http://localhost:3000	/auth
