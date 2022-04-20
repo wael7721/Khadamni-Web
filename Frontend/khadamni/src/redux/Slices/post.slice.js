@@ -7,10 +7,10 @@ const post = JSON.parse(localStorage.getItem("post"));
 
 export const createPost = createAsyncThunk(
     "posts/createPost",
-    async ({ field, schedule, location }, navigate , thunkAPI) => {
+    async ({ field, location, schedule }, navigate , thunkAPI) => {
       try {
-        console.log(field, schedule, location);
-        const response = await postService.createPost({field, schedule, location});
+        console.log(field, location, schedule);
+        const response = await postService.createPost(field, location, schedule);
         console.log(response);
         thunkAPI.dispatch(setMessage(response.data.message));
         navigate("/Dashboard/posts")

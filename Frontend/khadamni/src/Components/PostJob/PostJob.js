@@ -33,9 +33,9 @@ export default function SelectOtherProps(props) {
 
   const handleSubmit = () => {
     const data = {
-      Location: Location,
-      Field: Field,
-      Schedule: Schedule
+      location: Location,
+      field: Field,
+      schedule: Schedule
     }
     
 
@@ -52,7 +52,7 @@ export default function SelectOtherProps(props) {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
       <FormControl sx={{ m: 1, minWidth: 120 }} >
         <InputLabel id="demo-simple-select-required-label">Schedule</InputLabel>
         <Select
@@ -63,14 +63,13 @@ export default function SelectOtherProps(props) {
           onChange={handleSchedule}
         >
           
-          <MenuItem value={10}>Monday</MenuItem>
-          <MenuItem value={20}>Tuesday</MenuItem>
-          <MenuItem value={30}>Thursday</MenuItem>
-          <MenuItem value={40}>Wednsday</MenuItem>
-          <MenuItem value={50}>Thursday</MenuItem>
-          <MenuItem value={60}>Friday</MenuItem>
-          <MenuItem value={70}>Saturday</MenuItem>
-          <MenuItem value={80}>Sunday</MenuItem>
+          <MenuItem value={"Monday"}>Monday</MenuItem>
+          <MenuItem value={"Tuesday"}>Tuesday</MenuItem>
+          <MenuItem value={"Wednesday"}>Wednsday</MenuItem>
+          <MenuItem value={"Thursday"}>Thursday</MenuItem>
+          <MenuItem value={"Friday"}>Friday</MenuItem>
+          <MenuItem value={"Saturday"}>Saturday</MenuItem>
+          <MenuItem value={"Sunday"}>Sunday</MenuItem>
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
@@ -85,9 +84,9 @@ export default function SelectOtherProps(props) {
          
         >
          
-          <MenuItem value={10}>Tunis</MenuItem>
-          <MenuItem value={20}>Ariana</MenuItem>
-          <MenuItem value={30}>Ben Arous</MenuItem>
+          <MenuItem value={"Tunis"}>Tunis</MenuItem>
+          <MenuItem value={"Ariana"}>Ariana</MenuItem>
+          <MenuItem value={"Ben Arous"}>Ben Arous</MenuItem>
         </Select>
         <FormHelperText>Error</FormHelperText>
       </FormControl>
@@ -102,14 +101,15 @@ export default function SelectOtherProps(props) {
           inputProps={{ readOnly: false }}
         >
           
-          <MenuItem value={10}>Gardening</MenuItem>
-          <MenuItem value={20}>Baby sitting</MenuItem>
-          <MenuItem value={30}>Plumbering</MenuItem>
+          <MenuItem value={"gardening"}>Gardening</MenuItem>
+          <MenuItem value={"Baby sitting"}>Baby sitting</MenuItem>
+          <MenuItem value={"Plumbering"}>Plumbering</MenuItem>
         </Select>
         <FormHelperText>Read only</FormHelperText>
       </FormControl>
       
-      <button>Submit </button>
+      <input type="submit"/>
+      
       </form>
     </div>
   );

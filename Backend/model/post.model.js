@@ -9,10 +9,10 @@ const Post = new mongoose.Schema(
     },
     title: { type: String, required: false },
     description: { type: String, required: false },
-    location: { type: String },
     dateofpost: { type: Date, default: Date.now, required: false },
     field: { type: String },
-    scheduele: { type: String },
+    location: { type: String },
+    schedule: { type: String },
   },
   { collection: "post-data" }
 );

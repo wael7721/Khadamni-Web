@@ -14,6 +14,7 @@ router.use(express.json());
 router.post("/", async (req, res) => {
   //
   try {
+    console.log(req.body)
     // const token = req.headers["x-access-token"];
     // const decoded = jwt.verify(token, "secret123");
     // let user = await User.find({ email: decoded.email });
@@ -27,7 +28,7 @@ router.post("/", async (req, res) => {
     console.log("reached")
     await Post.create({
       field: req.body.field,
-      scheduele: req.body.scheduele,
+      schedule: req.body.schedule,
       location: req.body.location,
     });
     return res.json({ status: "ok", message: "done" });
