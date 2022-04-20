@@ -2,11 +2,17 @@ const mongoose = require("mongoose");
 
 const Post = new mongoose.Schema(
   {
-    employeeid: { type: mongoose.Schema.Types.ObjectId,ref:"UserData", required: true },
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    location:{type:String},
-    dateofpost: { type: Date, default: Date.now, required: true },
+    employeeid: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "UserData",
+      required: false,
+    },
+    title: { type: String, required: false },
+    description: { type: String, required: false },
+    location: { type: String },
+    dateofpost: { type: Date, default: Date.now, required: false },
+    field: { type: String },
+    scheduele: { type: String },
   },
   { collection: "post-data" }
 );

@@ -14,24 +14,25 @@ router.use(express.json());
 router.post("/", async (req, res) => {
   //
   try {
-    const token = req.headers["x-access-token"];
-    const decoded = jwt.verify(token, "secret123");
-    let user = await User.find({ email: decoded.email });
+    // const token = req.headers["x-access-token"];
+    // const decoded = jwt.verify(token, "secret123");
+    // let user = await User.find({ email: decoded.email });
 
-    if (!user) {
-      return res.json({ message: "user not found" });
-    }
-    if (false /*if not a job seeker*/) {
-      return res.json({ message: "job seekers arent allowed to post" });
-    }
+    // if (!user) {
+    //   return res.json({ message: "user not found" });
+    // }
+    // if (false /*if not a job seeker*/) {
+    //   return res.json({ message: "job seekers arent allowed to post" });
+    // }
+    console.log("reached")
     await Post.create({
-      jobberid: user[0].id,
-      title: req.body.title,
-      description: req.body.description,
+      field: req.body.field,
+      scheduele: req.body.scheduele,
+      location: req.body.location,
     });
     return res.json({ status: "ok", message: "done" });
   } catch (error) {
-    return res.json({ status: error, message: "unauthorized" });
+    return res.json({ status: error });
   }
 });
 router.get("/all", async (req, res) => {
