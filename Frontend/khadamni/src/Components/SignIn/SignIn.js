@@ -11,16 +11,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { login } from "../../redux/Slices/auth";
 import { clearMessage } from "../../redux/Slices/message";
+import { Link } from "react-router-dom";
+
 
 
 
  const  SignIn = (props) => {
+    
+   
 
     const LOGIN_URL = '/auth';
     const [loading, setLoading] = useState(false);
 
-    const { isLoggedIn } = useSelector((state) => state.auth);
-    const { message } = useSelector((state) => state.message);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,48 +32,50 @@ import { clearMessage } from "../../redux/Slices/message";
       }, [dispatch]);
     
 
-    const { setAuth } = useContext(AuthContext);
-    const userRef = useRef();
-    const errRef = useRef();
+  const { setAuth } = useContext(AuthContext);
+  const userRef = useRef();
+  const errRef = useRef();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [user, setUser] = useState('');
-    const [pwd, setPwd] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
+  useEffect(() => {
+      userRef.current.focus();
+  }, [])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, pwd])
+  useEffect(() => {
+      setErrMsg('');
+  }, [user, pwd])
+
+
   
-    const handleSubmit = () => {
-        const data = {
-            user: user,
-            pwd: pwd
-        }
-        setLoading(true);
-
-        dispatch(login(data, navigate))
-        .unwrap()
-        .then(() => {
-            props.history.push("/Dashboard");
-            window.location.reload();
-        })
-        .catch(() => {
-            setLoading(false);
-        });
-    };
-
-    if (isLoggedIn) {
-        return <Navigate to="/Dashboard" />;
+const handleSubmit = () => {
+    const data = {
+        user: user,
+        pwd: pwd
     }
+    setLoading(true);
 
-return (
+    dispatch(login(data, navigate))
+      .unwrap()
+      .then(() => {
+        props.history.push("/Dashboard");
+        window.location.reload();
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
+
+  if (isLoggedIn) {
+    return <Navigate to="/Dashboard" />;
+  }
+
+  return (
     <>
         {success ? (
             <section>
@@ -109,7 +115,7 @@ return (
                     Need an Account?<br />
                     <span className="line">
                         {/*put router link here*/}
-                        <a href="#">Sign Up</a>
+                        <Link to="/SignUp">Sign Up</Link>
                     </span>
                 </p>
             </section>

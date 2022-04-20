@@ -16,6 +16,7 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { makeStyles } from "@material-ui/core/styles";
 import PrimarySearchAppBar from '../Header/AppBar';
+import { useNavigate } from "react-router-dom";
 
 
 function Copyright() {
@@ -30,6 +31,7 @@ function Copyright() {
     </Typography>
   );
 }
+
 
 const cards = [
   {
@@ -99,12 +101,14 @@ const theme = createTheme();
 
 export default function Album() {
   const classes = useStyles();
+
+  const navigate = useNavigate();
   return (
-    
+
     <ThemeProvider theme={theme}>
-      <PrimarySearchAppBar/>
+      <PrimarySearchAppBar />
       <CssBaseline />
-     <main>
+      <main>
         {/* Hero unit */}
         <Box
           sx={{
@@ -133,15 +137,15 @@ export default function Album() {
               justifyContent="center"
             >
               <Button variant="contained" href="/JobberSignUp">Become a jobber</Button>
-              <Button variant="outlined"> Ask for a service</Button>
+              <Button onClick={() => navigate("/SignIn")} variant="outlined"> Post a job offer</Button>
             </Stack>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-           
-             {cards.map(card => (
+
+            {cards.map(card => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -151,7 +155,7 @@ export default function Album() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                    {card.title}
+                      {card.title}
                     </Typography>
                     <Typography>description</Typography>
                   </CardContent>

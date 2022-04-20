@@ -2,7 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/Slices/auth";
 import { clearMessage } from "../../redux/Slices/message";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 
 
 
@@ -195,7 +196,7 @@ const SignUp = () => {
                     Already registered?<br />
                     <span className="line">
                         {/*put router link here*/}
-                        <a href="">Sign In</a>
+                        <Link to="/SignIn">Sign In</Link>
                     </span>
                 </p>
             </section>

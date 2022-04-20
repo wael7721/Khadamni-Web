@@ -31,28 +31,32 @@ router.post("/", async (req, res) => {
       schedule: req.body.schedule,
       location: req.body.location,
     });
+    console.log("reached2")
     return res.json({ status: "ok", message: "done" });
   } catch (error) {
     return res.json({ status: error });
   }
 });
 router.get("/all", async (req, res) => {
-  //get all posts
-  //views posts
-
   try {
-    //find posts
     let posts = await Post.find(
       {},
       {
-        _id: 1,
+        _id: 0,
+
         title: 1,
+
         description: 1,
+
+        location: 1,
+
         dateofpost: 1,
-        jobberid: 1,
-        location: 0,
+
+        field: 1,
+
+        schedule: 1
       }
-    ).populate("jobberid", { name: 1, _id: 0 });
+    );
     if (!posts) {
       //no posts in db
       return res.json({ error: "no posts found" });

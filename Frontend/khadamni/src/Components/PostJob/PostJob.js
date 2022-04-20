@@ -33,8 +33,8 @@ export default function SelectOtherProps(props) {
 
   const handleSubmit = () => {
     const data = {
-      location: Location,
       field: Field,
+      location: Location,
       schedule: Schedule
     }
     
@@ -43,6 +43,7 @@ export default function SelectOtherProps(props) {
       .unwrap()
       .then(() => {
         props.history.push("/Dashboard/Posts");
+        console.log("hi");
         window.location.reload();
       })
       .catch(() => {
@@ -88,7 +89,7 @@ export default function SelectOtherProps(props) {
           <MenuItem value={"Ariana"}>Ariana</MenuItem>
           <MenuItem value={"Ben Arous"}>Ben Arous</MenuItem>
         </Select>
-        <FormHelperText>Error</FormHelperText>
+        <FormHelperText>Required</FormHelperText>
       </FormControl>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-readonly-label">Field</InputLabel>
@@ -105,7 +106,7 @@ export default function SelectOtherProps(props) {
           <MenuItem value={"Baby sitting"}>Baby sitting</MenuItem>
           <MenuItem value={"Plumbering"}>Plumbering</MenuItem>
         </Select>
-        <FormHelperText>Read only</FormHelperText>
+        <FormHelperText>Required</FormHelperText>
       </FormControl>
       
       <input type="submit"/>

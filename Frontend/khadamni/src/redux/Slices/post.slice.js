@@ -6,7 +6,7 @@ import postService from "../services/post.service"
 const post = JSON.parse(localStorage.getItem("post"));
 
 export const createPost = createAsyncThunk(
-    "posts/createPost",
+    "post/createPost",
     async ({ field, location, schedule }, navigate , thunkAPI) => {
       try {
         console.log(field, location, schedule);

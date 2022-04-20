@@ -14,3 +14,8 @@
 20220326	17:46:57	104e5b62-da16-4e2a-aa6a-89cc6cae0651	SyntaxError: Unexpected token u in JSON at position 0
 20220326	17:47:34	f0ef1d8d-42d2-42e2-be97-6c75bfb1d5cd	SyntaxError: Unexpected token u in JSON at position 0
 20220326	17:49:08	f74e1d0b-b039-4770-951d-891ba89c9b36	SyntaxError: Unexpected token u in JSON at position 0
+20220420	17:30:39	957043f6-b4ca-4158-90f8-ced01e44867a	SyntaxError: Unexpected token " in JSON at position 0
+20220420	17:37:44	0cfacdcf-c636-4b26-b70c-875abbe90f56	SyntaxError: Unexpected token } in JSON at position 21
+20220420	17:38:09	90a15aad-f02f-417a-9072-638820dab7b6	SyntaxError: Unexpected token { in JSON at position 1
+20220420	17:42:23	b6f13906-2248-405f-929e-15818bd4c0a9	SyntaxError: Unexpected token f in JSON at position 1
+20220420	17:42:48	d1927ed5-fe0a-4173-a58d-a182e980eca7	SyntaxError: Unexpected token ' in JSON at position 1
