@@ -42,7 +42,7 @@ export default function SelectOtherProps(props) {
     dispatch(createPost(data, navigate))
       .unwrap()
       .then(() => {
-        props.history.push("/Dashboard/Posts");
+        // props.history.push("/Dashboard/Posts");
         console.log("hi");
         window.location.reload();
       })

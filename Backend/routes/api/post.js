@@ -32,6 +32,7 @@ router.post("/", async (req, res) => {
       location: req.body.location,
     });
     console.log("reached2")
+    console.log(req.body)
     return res.json({ status: "ok", message: "done" });
   } catch (error) {
     return res.json({ status: error });

@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { setMessage } from "./message";
 
-import postService from "../services/post.service"
+import postService from "../services/post.service";
+import listPost from "../services/post.service";
 
 const post = JSON.parse(localStorage.getItem("post"));
 
@@ -14,6 +15,28 @@ export const createPost = createAsyncThunk(
         console.log(response);
         thunkAPI.dispatch(setMessage(response.data.message));
         navigate("/Dashboard/posts")
+        return response.data;
+      } catch (error) {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        thunkAPI.dispatch(setMessage(message));
+        return thunkAPI.rejectWithValue();
+      }
+    }
+  );
+
+
+  export const viewPost = createAsyncThunk(
+    "post/viewPost",
+    async ({ } , thunkAPI) => {
+      try {
+        const response = await listPost.viewPost();
+        console.log(response);
+        thunkAPI.dispatch(setMessage(response.data.message));
         return response.data;
       } catch (error) {
         const message =
