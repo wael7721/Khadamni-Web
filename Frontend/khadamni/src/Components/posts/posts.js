@@ -21,7 +21,7 @@ export default function Post() {
 
     const arr = data.map((data, index) => {
         return (
-            <>
+            <div key={index}>
                 <img width={10} height={"400"} src="https://img-0.journaldunet.com/aA_oQO2y9XDwPXM4qfgFI7_OnUw=/600x/smart/9547dd346990418fa8a7c313a6e687b0/ccmcms-jdn/25881197.jpg" className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{data.field}</h5>
@@ -36,31 +36,31 @@ export default function Post() {
                     <button>Delete</button>
 
                 </ul>
-                <></></>
+                </div>
 
-        )
+                )
     })
 
 
-    return (
-       <><ProfileAppBar/>
-        <container style={{
-            "width": "90%",
-            "display": "flex",
-            "align": "center",
-            "alignItems": "center",
-            "justifyContent": "center"
-        }}>
-            
-            <div className="card" >
+                return (
+                <><ProfileAppBar />
+                    <container style={{
+                        "width": "90%",
+                        "display": "flex",
+                        "align": "center",
+                        "alignItems": "center",
+                        "justifyContent": "center"
+                    }}>
 
-                {arr}
-                <div className="card-body">
-                    <a href="#" className="card-link">Card link</a>
-                    <a href="#" className="card-link">Another link</a>
-                </div>
-            </div>
-        </container>
-        </>
-    );
+                        <div className="card" >
+
+                            {arr}
+                            <div className="card-body">
+                                <a href="#" className="card-link">Card link</a>
+                                <a href="#" className="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </container>
+                </>
+                );
 }

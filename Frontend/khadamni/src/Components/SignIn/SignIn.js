@@ -12,6 +12,7 @@ import { Navigate } from "react-router-dom";
 import { login } from "../../redux/Slices/auth";
 import { clearMessage } from "../../redux/Slices/message";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 
 
@@ -53,22 +54,28 @@ import { Link } from "react-router-dom";
 
 
   
-const handleSubmit = () => {
-    const data = {
-        user: user,
-        pwd: pwd
-    }
-    setLoading(true);
+const  handleSubmit = () => {
 
-    dispatch(login(data, navigate))
-      .unwrap()
-      .then(() => {
-        props.history.push("/Dashboard");
-        window.location.reload();
+    // setLoading(true);
+
+    axios.post('http://localhost:3500/auth',{user,pwd}
+      )
+      .then(function (response) {
+        console.log(response);
       })
-      .catch(() => {
-        setLoading(false);
+      .catch(function (error) {
+        console.log(error);
       });
+
+    // dispatch(login(data, navigate))
+    //   .unwrap()
+    //   .then(() => {
+    //     props.history.push("/Dashboard");
+       
+    //   })
+    //   .catch(() => {
+    //     setLoading(false);
+    //   });
   };
 
   if (isLoggedIn) {
