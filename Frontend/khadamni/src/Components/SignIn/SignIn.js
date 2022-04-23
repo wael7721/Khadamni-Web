@@ -54,18 +54,17 @@ import axios from 'axios';
 
 
   
-const  handleSubmit = () => {
+const  handleSubmit =() => {
 
     // setLoading(true);
 
-    axios.post('http://localhost:3500/auth',{user,pwd}
-      )
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    axios.post('http://localhost:3500/auth/login',{user,pwd})
+    .then((response)=>{console.log(response)})
+    .catch((err)=>{console.log(err)})
+
+    //   .catch(function (error) {
+    //     console.log("error");
+    //   });
 
     // dispatch(login(data, navigate))
     //   .unwrap()
@@ -76,7 +75,7 @@ const  handleSubmit = () => {
     //   .catch(() => {
     //     setLoading(false);
     //   });
-  };
+  }
 
   if (isLoggedIn) {
     return <Navigate to="/Dashboard" />;
