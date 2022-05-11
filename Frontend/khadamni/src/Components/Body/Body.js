@@ -36,32 +36,32 @@ function Copyright() {
 const cards = [
   {
     img:
-      "https://i.pinimg.com/564x/74/6e/24/746e24b1f20ea4f0cf148e33642f9445.jpg",
-    title: "Plumbering"
-  },
-  {
-    img:
-      "https://i.pinimg.com/564x/38/bf/5c/38bf5c58d593829afb61c7ff15c7e26a.jpg",
-    title: "Kids"
-  },
-  {
-    img:
-      "https://i.pinimg.com/564x/38/bf/5c/38bf5c58d593829afb61c7ff15c7e26a.jpg",
-    title: "Gardening"
-  },
-  {
-    img:
-      "https://i.pinimg.com/564x/98/d4/16/98d41697b556b86cf54b6310fa483d18.jpg",
-    title: "Animals"
-  },
-  {
-    img:
-      "https://images.unsplash.com/photo-1564135624576-c5c88640f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80",
+      "https://www.super-bac.com/articles/wp-content/uploads/2020/03/mercatique-min.png",
     title: "IT"
   },
   {
     img:
-      "https://images.unsplash.com/photo-1564135624576-c5c88640f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80",
+      "https://img.freepik.com/free-photo/happy-baby-sitting-table-kitchen-eating-with-appetite_144520-794.jpg",
+    title: "Baby Sitting"
+  },
+  {
+    img:
+      "https://ca-times.brightspotcdn.com/dims4/default/fcfdda9/2147483647/strip/true/crop/1800x1013+0+0/resize/840x473!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Ff5%2F33%2F417fa05141e394041be1e7fe9813%2Fgardening-clip-art-adobe-stock.jpg",
+    title: "Gardening"
+  },
+  {
+    img:
+      "https://images.theconversation.com/files/223380/original/file-20180615-85830-1m127xe.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+    title: "Animals"
+  },
+  {
+    img:
+      "https://testprepscore.com/wp-content/uploads/2021/04/In-Person-vs-Online-Tutoring-750x480.jpg",
+    title: "Tutoring"
+  },
+  {
+    img:
+      "https://img.huffingtonpost.com/asset/5e75341e2600000a34b67120.jpeg?cache=SxSWCaxXjg&ops=crop_0_527_3902_2751,scalefit_630_noupscale",
     title: "House moving"
   }
 ];
@@ -86,7 +86,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   cardMedia: {
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "90%" // 16:9
   },
   cardContent: {
     flexGrow: 1
@@ -125,11 +125,9 @@ export default function Album() {
               color="text.primary"
               gutterBottom
             >
-              Find the Jobber that fits all your expectations and criterias.
+              Find the ideal Jobber for your daily services.
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              What service do you need ?
-            </Typography>
+            
             <Stack
               sx={{ pt: 4 }}
               direction="row"
@@ -139,6 +137,9 @@ export default function Album() {
               <Button variant="contained" href="/JobberSignUp">Become a jobber</Button>
               <Button onClick={() => navigate("/SignIn")} variant="outlined"> Post a job offer</Button>
             </Stack>
+            <Typography variant="h4" align="left" color="text.secondary" paragraph>
+              What service do you need ?
+            </Typography>
           </Container>
         </Box>
         <Container sx={{ py: 8 }} maxWidth="md">
