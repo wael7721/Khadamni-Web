@@ -896,3 +896,9 @@
 20220420	23:01:31	fde3c705-98a0-4267-b8f4-4f82cc935910	GET	undefined	/api/post/all
 20220420	23:18:48	7f4578d4-2c58-42b0-9ee2-7698c092d785	POST	http://localhost:3000	/api/post
 20220420	23:19:11	a9930053-62f8-4835-8923-80ff5385d73d	GET	undefined	/api/post/all
+20220510	23:10:10	5eb1b6a0-eebf-4d8a-9d85-9f9ffed0f3ec	OPTIONS	http://localhost:3000	/auth
+20220510	23:10:10	06e07278-cdeb-496d-89b0-1609273a6ed4	POST	http://localhost:3000	/auth
+20220510	23:10:41	18e87233-175f-4434-8d3a-c1db92e2300a	OPTIONS	http://localhost:3000	/register
+20220510	23:10:41	b2aedd7d-9a54-4744-a11a-99aef551c79a	POST	http://localhost:3000	/register
+20220510	23:10:53	c8be6e45-30b6-4ef0-9334-c77ad04b92df	OPTIONS	http://localhost:3000	/auth
+20220510	23:10:53	ccf46d87-69c8-4801-bd6c-3698caefa19f	POST	http://localhost:3000	/auth
