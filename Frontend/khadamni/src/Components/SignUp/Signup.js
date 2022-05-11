@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../redux/Slices/auth";
 import { clearMessage } from "../../redux/Slices/message";
 import { useNavigate, Link } from "react-router-dom";
-
+import ProfileAppBar from "../Dashboard/profileAppBar"
 
 
 
@@ -117,8 +117,9 @@ const SignUp = () => {
 
     return (
         <div>
-
+            
             <section>
+                <ProfileAppBar/>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                 <h1>Register</h1>
                 <form onSubmit={handleSubmit}>

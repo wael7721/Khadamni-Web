@@ -31,6 +31,7 @@ const login = async ({user, pwd}) => {
        
   
     try {
+      console.log("test")
         const response = await axios.post(API_URL + "auth",
             JSON.stringify({ user, pwd }),
             {
@@ -38,10 +39,9 @@ const login = async ({user, pwd}) => {
                 withCredentials: true
             }
         );
-        console.log(JSON.stringify(response));
         
-        const accessToken = response?.data?.accessToken;
-        const roles = response?.data?.roles;
+        const accessToken = response.data.accessToken;
+        const roles = response.data.roles;
       //   setAuth({ user, pwd, roles, accessToken });
       //   setUser('');
       //   setPwd('');
@@ -50,7 +50,7 @@ const login = async ({user, pwd}) => {
         
         
     } catch (err) {
-        
+        console.log(err)
     }
 }
 

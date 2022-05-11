@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-
+import axios from 'axios';
 import { useState } from 'react';
 import { useRef, useEffect, useContext } from 'react';
 import AuthContext from "../context/AuthProvider";
@@ -12,7 +12,7 @@ import { Navigate } from "react-router-dom";
 import { login } from "../../redux/Slices/auth";
 import { clearMessage } from "../../redux/Slices/message";
 import { Link } from "react-router-dom";
-
+import ProfileAppBar from "../Dashboard/profileAppBar"
 
 
 
@@ -53,23 +53,32 @@ import { Link } from "react-router-dom";
 
 
   
-const handleSubmit = () => {
-    const data = {
-        user: user,
-        pwd: pwd
-    }
-    setLoading(true);
+const  handleSubmit = async () => {
+    try {
+    // setLoading(true);
 
-    dispatch(login(data, navigate))
-      .unwrap()
-      .then(() => {
-        props.history.push("/Dashboard");
-        window.location.reload();
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  };
+    
+        console.log("test")
+          const response = await axios.post("localhost:3500/api/auth/",
+              { user, pwd },
+              {
+                  headers: { 'Content-Type': 'application/json' },
+                  withCredentials: true
+              }
+          );
+          console.log(response)
+  
+  const accessToken = response.data.accessToken;
+  const roles = response.data.roles;
+//   setAuth({ user, pwd, roles, accessToken });
+//   setUser('');
+//   setPwd('');
+//   setSuccess(true)
+  console.log("======")
+  }
+   catch (err) {
+  console.log(err)
+}}
 
   if (isLoggedIn) {
     return <Navigate to="/Dashboard" />;
@@ -77,6 +86,7 @@ const handleSubmit = () => {
 
   return (
     <>
+    
         {success ? (
             <section>
                 <h1>You are logged in!</h1>
@@ -87,9 +97,11 @@ const handleSubmit = () => {
             </section>
         ) : (
             <section>
+                <ProfileAppBar/>
                 <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                
                 <h1>Sign In</h1>
-                <form onSubmit={handleSubmit}>
+                <div >
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"
@@ -109,8 +121,8 @@ const handleSubmit = () => {
                         value={pwd}
                         required
                     />
-                    <button>Sign In</button>
-                </form>
+                    <button onClick={handleSubmit}>Sign In</button>
+                </div>
                 <p>
                     Need an Account?<br />
                     <span className="line">

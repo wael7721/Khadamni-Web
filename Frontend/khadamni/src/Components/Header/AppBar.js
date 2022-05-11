@@ -12,6 +12,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import  SignUp from "../SignUp/Signup";
@@ -20,8 +21,9 @@ import Dashboard from "../Dashboard/Dashboard";
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import VpnKeyRoundedIcon from '@mui/icons-material/VpnKeyRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
-
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import JobberSignUp from "../JobberSignUp/JobberSignUp";
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -129,7 +131,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit" href="/SignIn">
           <Badge badgeContent={4} color="error">
-            <VpnKeyRoundedIcon />
+            <AddCircleOutlineIcon />
           </Badge>
         </IconButton>
         <p>SignIn</p>
@@ -142,7 +144,7 @@ export default function PrimarySearchAppBar() {
           href="SignUp"
         >
           <Badge badgeContent={17} color="error">
-            <LoginRoundedIcon />
+            <AddCircleOutlineIcon />
           </Badge>
         </IconButton>
         <p>Login</p>
@@ -178,7 +180,7 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large"  color="inherit" href="SignIn">
               <Badge color="error">
-                <LoginRoundedIcon />
+                <LockOpenIcon />
               </Badge>
             </IconButton>
             <IconButton
@@ -187,7 +189,7 @@ export default function PrimarySearchAppBar() {
               href="/SignUp"
             >
               <Badge  color="error">
-                <VpnKeyRoundedIcon />
+                <PersonAddAltIcon />
               </Badge>
             </IconButton>
            
